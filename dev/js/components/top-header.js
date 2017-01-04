@@ -1,8 +1,10 @@
 import React from 'react';
 
-const THeader = () => (
+const THeader = React.createClass({
+  render: function() {
+    return (
     <section className="header_top_part">
-        <div className="container">
+        <div className="container-fluid">
             <div className="row">
                 <div className="col-lg-6 col-md-6 col-sm-6 t_xs_align_c">
                     <ul className="hr_list fs_small color_grey_light">
@@ -35,5 +37,7 @@ const THeader = () => (
         </div>
     </div>
   </section>);
+  }
+});
 
 export default THeader;

@@ -3,10 +3,15 @@ import UserList from '../containers/user-list';
 import UserDetails from '../containers/user-detail';
 import BHeader from './bottom-header';
 import THeader from './top-header';
-const App = () => (
+var App = React.createClass({
+  render: function() {
+    return (
     <div>
-        <THeader />
-        <BHeader />
+        <header role='banner' className='relative'>
+            <THeader />
+            <BHeader />
+        </header>
+        {this.props.children}
         <h2>User List</h2>
         <UserList />
         <hr />
@@ -14,5 +19,7 @@ const App = () => (
         <UserDetails />
     </div>
 );
+}
+});
 
 export default App;

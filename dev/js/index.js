@@ -8,7 +8,9 @@ import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 import allReducers from './reducers';
 import App from './components/app';
-import {browserHistory, Router, Route} from 'react-router';
+import MainCarousal from './components/main-carousal';
+import AboutUs from './components/about-us';
+import {browserHistory, IndexRoute, Router, Route} from 'react-router';
 
 const logger = createLogger();
 const store = createStore(
@@ -19,7 +21,10 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory} >  
-            <Route path='/' component={App} />    
+            <Route path='/' component={App}>
+                <IndexRoute component={MainCarousal}/>
+                <Route path='/about' component={AboutUs}/>
+            </Route>    
         </Router>
     </Provider>,
     document.getElementById('root')
