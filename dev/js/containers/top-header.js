@@ -1,9 +1,21 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import LoginModal from './login-modal';
+/*
+ * We need "if(!this.props.user)" because we set state to null by default
+ * */
 
-const THeader = React.createClass({
-  render: function() {
+class THeader extends Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = {
+            isPopupModalVisible: false
+        }
+    }
+    render() {
     return (
-    <section className="header_top_part">
+        <section className="header_top_part">
         <div className="container-fluid">
             <div className="row">
                 <div className="col-lg-6 col-md-6 col-sm-6 t_xs_align_c">
@@ -14,9 +26,6 @@ const THeader = React.createClass({
                 </div>
                 <div className="col-lg-6 col-md-6 col-sm-6 t_align_r t_xs_align_c">
                     <ul className="hr_list d_inline_b social_icons">
-                        <li className="m_right_8"><a href="upload1.php" >Welcome</a></li>
-                        <li className="m_right_8"><a href="logout.php" >Logout</a></li>
-                        <li className="m_right_8"><a href="" data-toggle="modal" data-target="#login-modal" >Login</a></li>
                         <li className="m_right_8">
                             <a href="#" className="color_grey_light facebook circle icon_wrap_size_1 d_block">
                                 <i className="icon-facebook-1"></i>
@@ -36,8 +45,30 @@ const THeader = React.createClass({
             </div>
         </div>
     </div>
+    {this.state.isPopupModalVisible ? this.makePopupModal() : null}
   </section>);
   }
-});
+
+showModal() {
+   this.setState({
+       isPopupModalVisible: true
+   });
+} 
+
+makePopupModal() {
+    return (
+        <div>
+            <LoginModal onModalClose={this.onModalClose.bind(this)}/>
+        </div>
+    );
+}
+
+onModalClose() {
+    this.setState({
+       isPopupModalVisible: false
+   });
+}
+
+}
 
 export default THeader;

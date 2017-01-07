@@ -115,14 +115,6 @@ font-size:22px; font-weight:700; margin:15px;}
 .productbox img {height:280px; width: 255px;}
 
 
-
-.btn-danger {
-  color: #fff;
-  background-color: #2BB0D7!important;
-  border-color: #FFF;
-}
-
-
 .producttitle {
   font-weight: bold;
   padding: 5px 0 5px 0;
@@ -724,7 +716,7 @@ a:focus {
 }
 .ui--gradient-grey {
 	background-color: #f1f1f1;
-	background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9z…5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c2ODkpIiAvPgo8L3N2Zz4=');
+	background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zï¿½5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c2ODkpIiAvPgo8L3N2Zz4=');
 	background-image: -moz-linear-gradient(top, #ffffff, #f1f1f1);
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f1f1f1));
 	background-image: -webkit-linear-gradient(top, #ffffff, #f1f1f1);
@@ -7366,7 +7358,6 @@ blockquote > p:last-of-type:after{
 ------------------------------------- */
 
 [role="banner"]{
-	padding-top:3px;
 	width:inherit;
 	z-index:150;
 }

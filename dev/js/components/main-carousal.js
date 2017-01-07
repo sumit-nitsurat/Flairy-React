@@ -1,7 +1,10 @@
 import React from 'react';
+import LoginModal from '../containers/login-modal';
+import HowItWorks from './how-it-works';
 
 const MainCarousal = () => (
-    <section className="relative w_full" style={{marginTop: "0px"}}>
+    <div>
+    <section className="relative w_full" style={{marginTop: "0px",width:"70%"}}>
         <div id="myCarousel" className="carousel slide" data-ride="carousel">
             <ol className="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
@@ -39,7 +42,6 @@ const MainCarousal = () => (
                         </div>
                 </div>
             </div>
-            //    Left and right controls
             <a className="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                 <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                 <span className="sr-only">Previous</span>
@@ -49,6 +51,9 @@ const MainCarousal = () => (
                 <span className="sr-only">Next</span>
             </a>
         </div>
-    </section>);
+        <LoginModal/>
+    </section>
+    <HowItWorks/>
+    </div>);
 
 export default MainCarousal;
