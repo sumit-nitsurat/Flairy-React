@@ -10,6 +10,7 @@ import allReducers from './reducers';
 import App from './components/app';
 import MainCarousal from './components/main-carousal';
 import AboutUs from './components/about-us';
+import LoginPage from './containers/login-page';
 import {browserHistory, IndexRoute, Router, Route} from 'react-router';
 
 const logger = createLogger();
@@ -24,6 +25,7 @@ ReactDOM.render(
             <Route path='/' component={App}>
                 <IndexRoute component={MainCarousal}/>
                 <Route path='/about' component={AboutUs}/>
+                <Route path='/login' component={LoginPage}/>
             </Route>    
         </Router>
     </Provider>,

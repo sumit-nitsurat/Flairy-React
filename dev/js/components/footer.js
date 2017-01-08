@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import LoginModal from './login-modal';
 /*
  * We need "if(!this.props.user)" because we set state to null by default
  * */
@@ -24,7 +23,6 @@ class THeader extends Component {
                 </div>
                 <div className="col-lg-6 col-md-6 col-sm-6 t_align_r t_xs_align_c">
                     <ul className="hr_list d_inline_b social_icons">
-                    <li className="m_right_8"><Link to="/login"><button className="btn btn-lg btn-primary btn-block">LOGIN</button></Link></li>
                         <li className="m_right_8">
                             <a href="#" className="color_grey_light facebook circle icon_wrap_size_1 d_block">
                                 <i className="icon-facebook-1"></i>

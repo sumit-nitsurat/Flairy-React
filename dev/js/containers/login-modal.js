@@ -8,20 +8,12 @@ class LoginModal extends Component {
 
   render() {
     let cName = classNames({
-        'login-popup' : true
+        'login-btn': this.props.isFullSection
     });
     let btnStyle = {
         marginLeft: '18%',
         marginTop: '15px',
         width: '70%'
-    }, loginSection = {
-        top: 0,
-        marginLeft: "100%",
-        position: "absolute",
-        height: "100%",
-        width: "43%",
-        background:"#000000",
-        padding: "10px 10px 10px 10px"
     },loginHeading = {
         fontFamily: "fantasy",
         fontSize: "24px",
@@ -30,11 +22,11 @@ class LoginModal extends Component {
         fontStyle: "italic"
     }
     return (
-      <div style={loginSection}>
+      <div className={this.props.classNames}>
                 <div style={loginHeading}>
                     <h4 className="modal-title">One step away to explore the world of opportunities !!!</h4>
                 </div>
-                <div>
+                <div className={cName}>
                     <button className="btn btn-lg btn-primary btn-block" style={btnStyle}>
                         <i className="icon-facebook" style={{padding:"8px"}}></i>Login with Facebook</button>
                     <button className="btn btn-lg btn-danger btn-block" style={btnStyle}>
@@ -43,10 +35,10 @@ class LoginModal extends Component {
       </div>
     )
   }
-
-  closeModal() {
-    this.props.onModalClose();
-  }
 }
 
 export default LoginModal;
+
+React.defaultPorps = {
+    isFullSection : false
+}

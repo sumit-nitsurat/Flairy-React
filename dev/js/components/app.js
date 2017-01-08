@@ -3,6 +3,7 @@ import UserList from '../containers/user-list';
 import UserDetails from '../containers/user-detail';
 import BHeader from './bottom-header';
 import THeader from '../containers/top-header';
+import Footer from './footer';
 var App = React.createClass({
   render: function() {
     return (
@@ -12,7 +13,7 @@ var App = React.createClass({
             <BHeader />
         </header>
         {this.props.children}
-        <THeader />
+        <Footer />
     </div>
 );
 }

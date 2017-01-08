@@ -51,7 +51,7 @@ const MainCarousal = () => (
                 <span className="sr-only">Next</span>
             </a>
         </div>
-        <LoginModal/>
+        <LoginModal classNames={'loginHome'}/>
     </section>
     <HowItWorks/>
     </div>);
