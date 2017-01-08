@@ -32,3 +32,23 @@
     margin-top: 2%;
     padding: 50px 53px 50px 18px;
 }
+.fb-icon{
+    padding: 5px;
+}
+.loginBtn{
+    margin-left: 17%;
+    margin-top: 10%;
+    width: 65%;
+    font-family: Helvetica,sans-serif;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: calc(.27548vw + 12.71074px);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color .3s,border-color .3s;
+    background-color: #4c69ba;
+    padding: calc(-0.65565vw + 14.38843px) calc(0.34435vw + 11.38843px);
+}
