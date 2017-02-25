@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import classNames from 'classnames';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
+import {browserHistory} from 'react-router';
+import {bindActionCreators} from 'redux';
+import request from 'superagent';
+import {connect} from 'react-redux';
+import {isUserLoggedIn} from '../actions/user-login'
 
 class LoginModal extends Component {
   constructor(props) {
@@ -14,17 +19,17 @@ class LoginModal extends Component {
     });
     let loginHeading = {
         fontFamily: "fantasy",
-        fontSize: "24px",
-        marginTop: "20px",
+        fontSize: "18px",
+        marginTop: "0px",
         fontWeight: "400",
         fontStyle: "italic"
     }
     return (
       <div className={this.props.classNames}>
-                <div style={loginHeading}>
-                    <h4 className="modal-title">One step away to explore the world of opportunities !!!</h4>
-                </div>
                 <div className={cName}>
+                    <div style={loginHeading}>
+                        <h4 className="modal-title">One step away to explore the world of opportunities !!!</h4>
+                    </div>
                     {this.facebookLogin()} 
                     {this.googleLogin()}               
                 </div>
@@ -32,13 +37,15 @@ class LoginModal extends Component {
     )
   }
   responseFacebook(response) {
-    console.log(response);
-  };
+      this.props.isUserLoggedIn(response, res => {
+          browserHistory.push('/profile/'+ res.name);
+      });
+  }
 
   facebookLogin() {
       return (
            <FacebookLogin
-                appId="xxxx"
+                appId="550210801788005"
                 autoLoad={false}
                 fields="name,email,picture"
                 icon="fa-facebook fb-icon"
@@ -58,7 +65,7 @@ class LoginModal extends Component {
         return (
         <span>
         <GoogleLogin
-            clientId="xxxx"
+            clientId="519411860675-purm0dbhibe04b4hrv2uqsuodjnd39ma.apps.googleusercontent.com"
             buttonText="LOGIN WITH GMAIL"
             onSuccess={this.responseGoogle.bind(this)}
             onFailure={this.responseGoogle.bind(this)}
@@ -72,8 +79,25 @@ class LoginModal extends Component {
     }
 }
 
-export default LoginModal;
+// Get apps state and pass it as props to UserList
+//      > whenever state changes, the UserList will automatically re-render
+function mapStateToProps(state) {
+    return {
+        activeUser: state.activeUser
+    };
+}
+
+// Get actions and pass them as props to to UserList
+//      > now UserList has this.props.selectUser
+function matchDispatchToProps(dispatch){
+    return bindActionCreators({isUserLoggedIn: isUserLoggedIn}, dispatch);
+}
+
+// We don't want to return the plain UserList (component) anymore, we want to return the smart Container
+//      > UserList is now aware of state and actions
+export default connect(mapStateToProps, matchDispatchToProps)(LoginModal);
 
 React.defaultPorps = {
-    isFullSection : false
+    isFullSection : false,
+    activeUser: null
 }

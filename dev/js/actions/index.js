@@ -1,7 +1,6 @@
-export const selectUser = (user) => {
-    console.log("You clicked on user: ", user.first);
+export const isLoggedIn = (user) => {
     return {
-        type: 'USER_SELECTED',
+        type: 'USER_LOGGEDIN',
         payload: user
     }
 };

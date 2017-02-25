@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 const BHeader = () => (
-    <section className="header_bottom_part bg_light">
+    <section className="header_bottom_part bg_light" style={{width: "100%"}}>
     <div className="container-fluid">
       <div className="d_table w_full d_xs_block" style={{marginTop: "0px"}}>
         <div className="col-lg-2 col-md-2 col-sm-2 d_table_cell d_xs_block f_none v_align_m logo t_xs_align_c"> <a href="index.php" className="d_inline_m m_xs_top_20 m_xs_bottom_20">

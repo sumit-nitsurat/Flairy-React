@@ -10,8 +10,15 @@ import allReducers from './reducers';
 import App from './components/app';
 import MainCarousal from './components/main-carousal';
 import AboutUs from './components/about-us';
+import JobsView from './containers/jobs/jobs-view';
 import LoginPage from './containers/login-page';
-import {browserHistory, IndexRoute, Router, Route} from 'react-router';
+import UserDetail from './containers/user-landing/user-detail';
+import Categories from './containers/user-landing/categories';
+import JobsHistoryView from './containers/jobs-history/jobs-history-view';
+import AllJobsHistory from './containers/jobs-history/all-jobs-history';
+import InProgressJobs from './containers/jobs-history/inprogress-jobs';
+import PaymentRequested from './containers/jobs-history/payment-requested';
+import {browserHistory, hashHistory, IndexRoute, Router, Route} from 'react-router';
 
 const logger = createLogger();
 const store = createStore(
@@ -24,9 +31,18 @@ ReactDOM.render(
         <Router history={browserHistory} >  
             <Route path='/' component={App}>
                 <IndexRoute component={MainCarousal}/>
-                <Route path='/about' component={AboutUs}/>
-                <Route path='/login' component={LoginPage}/>
-            </Route>    
+                <Route path='about' component={AboutUs}/>
+                <Route path='login' component={LoginPage}/>
+            </Route>
+            <Route path='/profile' component={UserDetail}>
+                <IndexRoute component={Categories}/>
+                <Route path='/jobs/:cat' component={JobsView}></Route>
+                <Route path='/jobs-history/all' component={JobsHistoryView}>
+                    <IndexRoute component={AllJobsHistory}/>
+                    <Route path='/jobs-history/in-progress' component={InProgressJobs}></Route>
+                    <Route path='/jobs-history/payment-requested' component={PaymentRequested}></Route>
+                </Route>
+            </Route>         
         </Router>
     </Provider>,
     document.getElementById('root')

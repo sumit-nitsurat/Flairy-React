@@ -71,7 +71,6 @@ input,textarea{
 	font-family:inherit;
 }
 input,button{
-	-webkit-appearance:none;
 	outline: none;
 	background:transparent;
 }
