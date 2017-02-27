@@ -8,18 +8,16 @@ class SideNav extends Component {
   }
 
   render() {
-
     return (
 <aside className="hs-menu" id="hs-menu">
             <div className="hs-headline">
-                <a id="my-link" href="#my-panel"><i className="fa fa-bars"></i></a>
-                <a href="#" className="download"><i className="fa fa-cloud-download"></i></a>
+                <div> FlairyEgg.in </div>
                 <div className="img-wrap">
-                    <img src="" alt="" width="150" height="150" />
+                    <img src={this.props.user.profile_pic} alt="" width="150" height="150" />
                 </div>
                 <div className="profile_info">
-                    <h1>SUMIT CAHDUHARI</h1>
-                    <h4>WEB DESIGNER</h4>
+                    <h1>{this.props.user.name}</h1>
+                    <h4>{this.props.user.userType}</h4>
                     <h6><span className="fa fa-location-arrow"></span>&nbsp;&nbsp;&nbsp;San Francisco , CA</h6>
                 </div>
                 <div style={{'clear':'both'}}></div>

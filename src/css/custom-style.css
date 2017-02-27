@@ -4,8 +4,53 @@
     }
 }
 
+.btn_toggle {
+    min-width: 175px;
+    border: 1px solid #efffff;
+}
+
+.btn_blue {
+    background-color: #55c0db !important;
+    color: #ffffff !important;
+}
+
+.btn_group_pos {
+    left: 35%;
+}
+
+.user_type {
+    font-family: cursive;
+    color: lightcoral;
+}
+
+.checkbox_login {
+    position: relative;
+    top: 15px;
+    left: 70px;
+    font-size: 12px;
+}
+
+.checkbox_login label {
+    padding-right: 5%;
+}
+
+.checkbox_login_full {
+    left: 20%;
+    font-size: 1.5vw;
+}
+
 .nav-tabs > li >  a.active {
     background: #FFDFDF;
+}
+
+.create_job {
+    padding: 5% 0 0 5%;
+}
+
+.create_job h3 {
+    color: #EC6F69;
+    font-family: serif;
+    font-weight: 600;
 }
 
 .no_data_found {
@@ -86,11 +131,11 @@
         min-height: 550px;
         height: 100%;
         width: 100%;
-        background:#000000;
+        background:#efefef;
         padding: 30px 10px 10px 10px;
 }
 .login-btn{
-    background: gray;
+    background: #000;
     border: 1px solid;
     width: 50%;
     margin-left: 20%;
@@ -323,7 +368,7 @@ a.hs-totop-link {
     width: 140px;
     height: 140px;
     padding: 5px;
-    opacity: 0.5;
+    opacity: 1;
 }
 
 .hs-headline .profile_info {
@@ -331,7 +376,9 @@ a.hs-totop-link {
 }
 
 .hs-headline .profile_info h1 {
-    font-size: 19px;
+    color: #b39964;
+    font-family: serif;
+    font-size: 15px;
     line-height: 30px;
     text-align: center;
     font-weight: 300;
@@ -341,8 +388,9 @@ a.hs-totop-link {
 }
 
 .hs-headline .profile_info h4 {
+    text-transform: capitalize;
     text-align: center;
-    font-size: 13px;
+    font-size: 12px;
     margin: 10px 0;
     font-weight: 300;
 }

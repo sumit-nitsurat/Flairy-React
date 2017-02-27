@@ -1,13 +1,28 @@
 import React, {Component} from 'react';
 import {browserHistory} from 'react-router';
+import classNames from 'classnames';
+import {connect} from 'react-redux';
 
 class Categories extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+        'btnState': 'postJob' 
+    }
   }
 
   render() {
-      
+    let cNameJob = classNames(
+        {'btn': true},
+        {'btn-default': true},
+        {'btn_toggle': true},
+        {'btn_blue': this.state.btnState === 'postJob'});
+        
+    let cNameFreelancer = classNames(
+        {'btn': true},
+        {'btn-default': true},
+        {'btn_toggle': true},
+        {'btn_blue': this.state.btnState === 'findFreelancer'});
     let imageStyle = {
         width: "50px",
         height: "50px",
@@ -15,11 +30,17 @@ class Categories extends Component {
         marginBottom: "-58px",
         marginTop: "-21px"
     }
+    
+    let visibleItem = this.props.user.userType === 'freelancer';
 
     return (
     <section className="hs-content-wrapper" style={{marginTop: '2%'}}>
         <div>
-            <h3 className="color_dark fw_light m_bottom_15 t_align_c heading_3">How we works</h3>
+            {!visibleItem && <div className="btn-group btn_group_pos" role="group" aria-label="...">
+                <button type="button" className={cNameJob} onClick={this.toggleSearch.bind(this, 'postJob')}>Post a Job</button>
+                <button type="button" className={cNameFreelancer} onClick={this.toggleSearch.bind(this, 'findFreelancer')}>Find a Freelancer</button>
+            </div>}
+            {visibleItem && <h3 className="color_dark fw_light m_bottom_15 t_align_c heading_3">How we works</h3>}
             <p className="m_bottom_40 t_align_c heading_4">Four step process to follow your heart </p>
             <div>
                 <div className="row m_bottom_30" >
@@ -38,7 +59,7 @@ class Categories extends Component {
                                 <a href="#" className="color_dark d_block n_sc_hover img-text">Creative Designer</a>
                                     <img src="../images/dance.jpg" className="img-circle background_img" alt="" style={{imageStyle}}/>
                             </h4>
-                            <p className="fs_medium m_bottom_10">Upload your artistic work here to get recognized by valuable people .</p>
+                            <p className="fs_medium m_bottom_10">Animation, poster design, ad design creativity.</p>
                         </figure>
                     </div>
 			        <div className="col-lg-3 col-md-3 col-sm-3 m_xs_bottom_30">
@@ -102,8 +123,27 @@ class Categories extends Component {
         </div>
     </section>);
   }
+  
+  toggleSearch(toggleState) {
+      this.setState({
+          btnState: toggleState
+      });
+  }
+  
   showDeatil(category) {
+      if(this.props.user.userType === 'client') {
+          this.state.btnState === 'postJob' ? browserHistory.push('/job-post') : browserHistory.push('/find-freelancer');
+          return;
+      }
       browserHistory.push('/jobs/' + category);
   }
 }
-export default Categories;
+
+// "state.activeUser" is set in reducers/index.js
+function mapStateToProps(state) {
+    return {
+        user: state.activeUser
+    };
+}
+
+export default connect(mapStateToProps)(Categories);

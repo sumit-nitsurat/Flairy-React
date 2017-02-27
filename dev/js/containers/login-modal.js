@@ -11,11 +11,19 @@ import {isUserLoggedIn} from '../actions/user-login'
 class LoginModal extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+        userType: 'freelancer'
+    }
   }
 
   render() {
     let cName = classNames({
         'login-btn': this.props.isFullSection
+    });
+    
+    let cNameUserType = classNames({
+        'checkbox_login': true,
+        'checkbox_login_full': this.props.isFullSection
     });
     let loginHeading = {
         fontFamily: "fantasy",
@@ -30,13 +38,31 @@ class LoginModal extends Component {
                     <div style={loginHeading}>
                         <h4 className="modal-title">One step away to explore the world of opportunities !!!</h4>
                     </div>
-                    {this.facebookLogin()} 
-                    {this.googleLogin()}               
+                    <div className={cNameUserType}>
+                        <label className="radio-inline">
+                            <input type="radio" name="optradio" onChange={this.handleUserTypeChange.bind(this, 'freelancer')} checked={this.state.userType === 'freelancer'}/>I am a <span className="user_type">Freelancer</span>
+                        </label>
+                        <label className="radio-inline">
+                            <input type="radio" name="optradio" onChange={this.handleUserTypeChange.bind(this, 'client')}  checked={this.state.userType === 'client'}/>I want to <span className="user_type">Hire</span>
+                        </label>
+                    </div>
+                    <div>
+                        {this.facebookLogin()} 
+                        {this.googleLogin()}
+                    </div>               
                 </div>
       </div>
     )
   }
+  
+  handleUserTypeChange(userType) {
+      this.setState({
+          userType: userType
+      })
+  }
+  
   responseFacebook(response) {
+      response.userType = this.state.userType;
       this.props.isUserLoggedIn(response, res => {
           browserHistory.push('/profile/'+ res.name);
       });

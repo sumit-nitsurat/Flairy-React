@@ -9728,7 +9728,6 @@ textarea,
 .select_title,
 input:not([type="submit"]){
 	border:1px solid #e1e4e6;
-	height:40px;
 	padding:5px 15px;
 	font-style:italic;
 }

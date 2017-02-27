@@ -6,5 +6,5 @@ module.exports = function(app,passportConf){
      * Front end routes
      */
     app.get('/test', contactController.test);
-    app.post('/login', userController.login);
+    app.post('/api/login', userController.login);
 }

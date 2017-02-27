@@ -5,7 +5,14 @@ module.exports = {
     devServer: {
         inline: true,
         contentBase: './src',
-        port: 3000,
+        port: 3002,
+        proxy: {
+            '/api/**': {
+            target: 'http://localhost:3004',
+            secure: false,
+            changeOrigin: true
+            }
+        },
         historyApiFallback: true
     },
     devtool: 'cheap-module-eval-source-map',

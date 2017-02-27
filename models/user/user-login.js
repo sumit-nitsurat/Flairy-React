@@ -4,9 +4,11 @@ var userSchema = new mongoose.Schema({
     "accessToken": Number,
     "name": String,
     "email": String,
+    "profile_pic": String,
+    "userType": String,
     "facebook": {
         "data": Object,
-        "active": false
+        "active": Boolean
     }
 });
 

@@ -32,7 +32,7 @@ app.use(bodyParser.json())
 require('./routes/')(app);
 
 // start the server
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3004;
 const env = process.env.NODE_ENV || 'production';
 app.listen(port, err => {
   if (err) {
